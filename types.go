@@ -54,6 +54,8 @@ type (
 		AppleTemplateRegistrationDescription *RegisteredDevice `xml:"AppleTemplateRegistrationDescription" json:"-"`
 		GcmRegistrationDescription           *RegisteredDevice `xml:"GcmRegistrationDescription"           json:"-"`
 		GcmTemplateRegistrationDescription   *RegisteredDevice `xml:"GcmTemplateRegistrationDescription"   json:"-"`
+		FcmV1RegistrationDescription         *RegisteredDevice `xml:"FcmV1RegistrationDescription"           json:"-"`
+		FcmV1TemplateRegistrationDescription *RegisteredDevice `xml:"FcmV1TemplateRegistrationDescription"   json:"-"`
 	}
 
 	// RegisteredDevice is a device registration to the hub
@@ -68,6 +70,7 @@ type (
 		DeviceToken          *string `xml:"DeviceToken"       json:"-"`
 		ExpirationTimeString *string `xml:"ExpirationTime"    json:"-"`
 		GcmRegistrationID    *string `xml:"GcmRegistrationId" json:"-"`
+		FcmV1RegistrationID  *string `xml:"FcmV1RegistrationId" json:"-"`
 		TagsString           *string `xml:"Tags"              json:"-"`
 	}
 
@@ -109,15 +112,16 @@ type (
 
 	// NotificationDetails is the detailed information about a sent or scheduled message
 	NotificationDetails struct {
-		ID                string                `xml:"NotificationId"`
-		State             NotificationState     `xml:"State"`
-		EnqueueTime       string                `xml:"EnqueueTime"`
-		StartTime         string                `xml:"StartTime"`
-		EndTime           string                `xml:"EndTime"`
-		Body              string                `xml:"NotificationBody"`
-		TargetPlatforms   string                `xml:"TargetPlatforms"`
-		ApnsOutcomeCounts *NotificationOutcomes `xml:"ApnsOutcomeCounts"`
-		GcmOutcomeCounts  *NotificationOutcomes `xml:"GcmOutcomeCounts"`
+		ID                 string                `xml:"NotificationId"`
+		State              NotificationState     `xml:"State"`
+		EnqueueTime        string                `xml:"EnqueueTime"`
+		StartTime          string                `xml:"StartTime"`
+		EndTime            string                `xml:"EndTime"`
+		Body               string                `xml:"NotificationBody"`
+		TargetPlatforms    string                `xml:"TargetPlatforms"`
+		ApnsOutcomeCounts  *NotificationOutcomes `xml:"ApnsOutcomeCounts"`
+		GcmOutcomeCounts   *NotificationOutcomes `xml:"GcmOutcomeCounts"`
+		FcmV1OutcomeCounts *NotificationOutcomes `xml:"FcmV1OutcomeCounts"`
 	}
 
 	// NotificationTelemetry is the id of a sent or scheduled message

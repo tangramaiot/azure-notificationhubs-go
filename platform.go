@@ -7,6 +7,7 @@ func (f NotificationFormat) GetContentType() string {
 	case Template,
 		AppleFormat,
 		GcmFormat,
+		FcmV1Format,
 		KindleFormat,
 		BaiduFormat:
 		return "application/json"
@@ -19,6 +20,7 @@ func (f NotificationFormat) GetContentType() string {
 func (f NotificationFormat) IsValid() bool {
 	return f == Template ||
 		f == GcmFormat ||
+		f == FcmV1Format ||
 		f == AppleFormat ||
 		f == BaiduFormat ||
 		f == KindleFormat ||
@@ -36,6 +38,8 @@ func (f TargetPlatform) IsValid() bool {
 		f == BaiduTemplatePlatform ||
 		f == GcmPlatform ||
 		f == GcmTemplatePlatform ||
+		f == FcmV1Platform ||
+		f == FcmV1TemplatePlatform ||
 		f == TemplatePlatform ||
 		f == WindowsphonePlatform ||
 		f == WindowsphoneTemplatePlatform ||

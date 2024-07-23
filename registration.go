@@ -81,6 +81,20 @@ func (r *RegistrationContent) normalize() {
 		r.RegisteredDevice.GcmRegistrationID = nil
 		r.GcmRegistrationDescription = nil
 		r.GcmTemplateRegistrationDescription = nil
+	} else if r.FcmV1RegistrationDescription != nil || r.FcmV1TemplateRegistrationDescription != nil {
+		if r.FcmV1TemplateRegistrationDescription != nil {
+			r.Format = Template
+			r.Target = FcmV1TemplatePlatform
+			r.RegisteredDevice = r.FcmV1TemplateRegistrationDescription
+		} else {
+			r.Format = FcmV1Format
+			r.Target = FcmV1Platform
+			r.RegisteredDevice = r.FcmV1RegistrationDescription
+		}
+		r.RegisteredDevice.DeviceID = *r.RegisteredDevice.FcmV1RegistrationID
+		r.RegisteredDevice.FcmV1RegistrationID = nil
+		r.FcmV1RegistrationDescription = nil
+		r.FcmV1TemplateRegistrationDescription = nil
 	}
 	if r.RegisteredDevice != nil {
 		expirationTime, err := time.Parse("2006-01-02T15:04:05.000Z", *r.RegisteredDevice.ExpirationTimeString)
@@ -141,6 +155,8 @@ func (h *NotificationHub) Register(ctx context.Context, r Registration) (raw []b
 		payload = strings.Replace(appleRegXMLString, "{{DeviceID}}", r.DeviceID, 1)
 	case GcmFormat:
 		payload = strings.Replace(gcmRegXMLString, "{{DeviceID}}", r.DeviceID, 1)
+	case FcmV1Format:
+		payload = strings.Replace(fcmV1RegXMLString, "{{DeviceID}}", r.DeviceID, 1)
 	default:
 		return nil, nil, errors.New("Notification format not implemented")
 	}
@@ -180,6 +196,8 @@ func (h *NotificationHub) RegisterWithTemplate(ctx context.Context, r TemplateRe
 		payload = strings.Replace(appleTemplateRegXMLString, "{{DeviceID}}", r.DeviceID, 1)
 	case GcmPlatform:
 		payload = strings.Replace(gcmTemplateRegXMLString, "{{DeviceID}}", r.DeviceID, 1)
+	case FcmV1Platform:
+		payload = strings.Replace(fcmV1TemplateRegXMLString, "{{DeviceID}}", r.DeviceID, 1)
 	default:
 		return nil, nil, errors.New("Notification format not implemented")
 	}

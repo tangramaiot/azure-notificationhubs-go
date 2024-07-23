@@ -70,4 +70,31 @@ const (
     </GcmTemplateRegistrationDescription>
   </content>
 </entry>`
+
+	// fcmV1RegXMLString is the XML string for registering an Android device
+	// Replace {{Tags}} and {{DeviceID}} with the correct values
+	fcmV1RegXMLString string = `<?xml version="1.0" encoding="utf-8"?>
+<entry xmlns="http://www.w3.org/2005/Atom">
+    <content type="application/xml">
+        <FcmV1RegistrationDescription xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect">
+      		<Tags>{{Tags}}</Tags>
+            <FcmV1RegistrationId>{{DeviceID}}</FcmV1RegistrationId>
+        </FcmV1RegistrationDescription>
+    </content>
+</entry>`
+
+	// fcmV1RegTemplateXMLString is the XML string for registering an Android device
+	// Replace {{Tags}}, {{DeviceID}} and {{Template}} with the correct values
+	fcmV1TemplateRegXMLString string = `<?xml version="1.0" encoding="utf-8"?>
+<entry xmlns="http://www.w3.org/2005/Atom">
+    <content type="application/xml">
+        <FcmV1TemplateRegistrationDescription xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect">
+      		<Tags>{{Tags}}</Tags>
+            <FcmV1RegistrationId>{{DeviceID}}</FcmV1RegistrationId>
+            <BodyTemplate><![CDATA[{{Template}}]]></BodyTemplate>
+        </FcmV1TemplateRegistrationDescription>
+    </content>
+</entry>`
 )

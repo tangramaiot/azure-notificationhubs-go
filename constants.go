@@ -9,6 +9,7 @@ const (
 	KindleFormat       NotificationFormat = "adm"
 	WindowsFormat      NotificationFormat = "windows"
 	WindowsPhoneFormat NotificationFormat = "windowsphone"
+	FcmV1Format        NotificationFormat = "FcmV1"
 
 	AdmPlatform                  TargetPlatform = "adm"
 	AdmTemplatePlatform          TargetPlatform = "admtemplate"
@@ -23,12 +24,15 @@ const (
 	WindowsphoneTemplatePlatform TargetPlatform = "windowsphonetemplate"
 	WindowsPlatform              TargetPlatform = "windows"
 	WindowsTemplatePlatform      TargetPlatform = "windowstemplate"
+	FcmV1Platform                TargetPlatform = "FcmV1"
+	FcmV1TemplatePlatform        TargetPlatform = "FcmV1template"
 
-	APNSPlatform InstallationPlatform = "apns"
-	WNSPlatform  InstallationPlatform = "wns"
-	MPNSPlatform InstallationPlatform = "mpns"
-	ADMPlatform  InstallationPlatform = "adm"
-	GCMPlatform  InstallationPlatform = "gcm"
+	APNSPlatform  InstallationPlatform = "apns"
+	WNSPlatform   InstallationPlatform = "wns"
+	MPNSPlatform  InstallationPlatform = "mpns"
+	ADMPlatform   InstallationPlatform = "adm"
+	GCMPlatform   InstallationPlatform = "gcm"
+	FCMV1Platform InstallationPlatform = "FcmV1"
 
 	InstallationChangeAdd     InstallationChangeOp = "add"
 	InstallationChangeRemove  InstallationChangeOp = "remove"
