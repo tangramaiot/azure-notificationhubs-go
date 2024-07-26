@@ -14,10 +14,12 @@ Basically a wrapper for this [Rest API](https://docs.microsoft.com/en-us/rest/ap
 
 ## Installing
 
-Using go get
+Using go mod
 
 ```sh
-go get github.com/daresaydigital/azure-notificationhubs-go
+require ithub.com/daresaydigital/azure-notificationhubs-go v0.1.4
+
+replace github.com/daresaydigital/azure-notificationhubs-go => github.com/tangramaiot/azure-notificationhubs-go v0.0.0-20240723010036-e33978f4f3ec
 ```
 
 ## External dependencies
@@ -168,45 +170,6 @@ Example devices:
 
 ## Changelog
 
-### v0.1.4
-
-- Fix for background notifications on iOS 13
-
-### v0.1.3
-
-- Pass the current context to the http request instead of using the background context, thanks to [NathanBaulch](https://github.com/NathanBaulch)
-- Add support for installations, thanks to [NathanBaulch](https://github.com/NathanBaulch)
-- Add support for batch send, thanks to [NathanBaulch](https://github.com/NathanBaulch)
-- Add support for unregistering a device, thanks to [NathanBaulch](https://github.com/NathanBaulch)
-- Add automatic testing for Go 1.13
-- Two minor bug fixes
-
-### v0.1.2
-
-- Bugfix for reading the message id on standard hubs. Headers are always lowercase.
-
-### v0.1.1
-
-- Bugfix for when device registration were responding an unexpected response.
-
-### v0.1.0
-
-- Support for templated notifications
-- Support for notification telemetry in higher tiers
-
-### v0.0.2
-
-- Big rewrite
-- Added get registrations
-- Travis CI
-- Renamed the entities to use the same nomenclature as Azure
-- Using fixtures for tests
-- Support tag expressions
-
-### v0.0.1
-
-First release by Daresay. Restructured the code and renamed the API according to
-Go standards.
 
 ## TODO
 
